@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>2026 丙午 · 人生策</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class', // Enable class-based dark mode
+        theme: {
+          extend: {
+            colors: {
+              paper: {
+                50: '#FDFBF7', 
+                100: '#F5F2E9', 
+                200: '#E6E2D6',
+                300: '#D6D6CB',
+                800: '#2C2C2A', 
+                900: '#1A1A18', 
+              },
+              cinnabar: {
+                500: '#D63224', 
+                700: '#A62419', 
+                900: '#75140C',
+              },
+              gold: {
+                500: '#E6B422',
+                600: '#D4A017',
+              },
+              // Cyber Theme Colors
+              cyber: {
+                bg: '#050505',
+                panel: '#0F1115',
+                primary: '#FF2A2A', // Neon Red
+                accent: '#E6B422',  // Gold
+                text: '#E0E0E0',
+                dim: '#4A4A4A',
+                grid: '#1A2332',
+              }
+            },
+            fontFamily: {
+              serif: ['"Noto Serif SC"', '"Songti SC"', 'serif'],
+              calligraphy: ['"Ma Shan Zheng"', 'cursive'], 
+              mono: ['"Courier New"', 'monospace'],
+            },
+            backgroundImage: {
+              'paper-texture': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")",
+              'horse-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10,40 Q15,30 25,25 Q35,20 40,10' stroke='%23A62419' stroke-width='1.5' fill='none' opacity='0.03'/%3E%3Cpath d='M5,45 Q10,35 20,30' stroke='%232C2C2A' stroke-width='1' fill='none' opacity='0.02'/%3E%3C/svg%3E\")",
+              'ink-mountains': "url(\"data:image/svg+xml,%3Csvg width='100%' height='100%' viewBox='0 0 800 400' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='fade' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%232C2C2A' stop-opacity='0.02'/%3E%3Cstop offset='100%25' stop-color='%232C2C2A' stop-opacity='0.08'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0,400 L0,250 Q200,150 400,300 T800,200 L800,400 Z' fill='url(%23fade)'/%3E%3Cpath d='M0,400 L0,320 Q250,280 450,350 T800,320 L800,400 Z' fill='%232C2C2A' opacity='0.03'/%3E%3C/svg%3E\")",
+              // Cyber Grids
+              'cyber-grid': "linear-gradient(rgba(26, 35, 50, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(26, 35, 50, 0.5) 1px, transparent 1px)",
+              'scanlines': "repeating-linear-gradient(0deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px)",
+            },
+            animation: {
+              'ink-spread': 'inkSpread 1.5s ease-out forwards',
+              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'swing': 'swing 3s ease-in-out infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'spin-slower': 'spin 20s linear infinite',
+              'glitch': 'glitch 1s linear infinite',
+              'scan': 'scan 3s linear infinite',
+            },
+            keyframes: {
+              inkSpread: {
+                '0%': { transform: 'scale(0.8)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              },
+              fadeInUp: {
+                '0%': { transform: 'translateY(10px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              swing: {
+                '0%, 100%': { transform: 'rotate(-5deg)' },
+                '50%': { transform: 'rotate(5deg)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              glitch: {
+                '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+                '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+                '62%': { transform: 'translate(0,0) skew(5deg)' },
+              },
+              scan: {
+                '0%': { backgroundPosition: '0 0' },
+                '100%': { backgroundPosition: '0 100%' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;700;900&display=swap');
+
+      /* FLASH FIX: Force specific background everywhere */
+      html, body, #root {
+        height: 100%;
+        width: 100%;
+        overflow: hidden; 
+        overscroll-behavior: none; /* Prevents "white void" bounce on pull */
+      }
+
+      /* Global Theme Variables */
+      :root {
+        --bg-color: #E6E2D6;
+        --text-color: #2C2C2A;
+        --accent-color: #A62419;
+      }
+
+      body.theme-cyber {
+        --bg-color: #050505;
+        --text-color: #E0E0E0;
+        --accent-color: #FF2A2A;
+        background-color: var(--bg-color);
+      }
+
+      body.theme-ink {
+         background-color: #E6E2D6;
+      }
+
+      /* FLASH FIX: Disable tap highlight color universally */
+      * {
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none;
+      }
+
+      body {
+        color: var(--text-color);
+        font-family: "Noto Serif SC", serif;
+        -webkit-font-smoothing: antialiased;
+        margin: 0;
+        padding: 0;
+        user-select: none; 
+        transition: background-color 0.5s ease;
+      }
+      
+      body.theme-cyber {
+        font-family: "Courier New", "Noto Serif SC", monospace;
+      }
+
+      input, textarea {
+        user-select: text; 
+      }
+      
+      button:focus {
+        outline: none;
+      }
+      
+      .vertical-text {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+      }
+
+      .hide-scrollbar::-webkit-scrollbar { display: none; }
+      .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      
+      /* New Year Decorations */
+      .lantern-swing {
+        transform-origin: top center;
+        animation: swing 4s ease-in-out infinite;
+      }
+
+      /* Cyber Scanline Overlay */
+      .scanlines::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+        z-index: 2;
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+      }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.37.0"
+  }
+}
+</script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
